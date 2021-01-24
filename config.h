@@ -29,14 +29,14 @@ typedef struct {
 } Sp;
 const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34", NULL };
 const char *spcmd2[] = {"st", "-n", "spfm", "-g", "144x41", "-e", "ranger", NULL };
-const char *spcmd4[] = {"st", "-n", "spnm", "-g", "144x41", "-e", "newsboat", NULL };
-const char *spcmd3[] = {"st", "-n", "spterm2", "-g", "120x34", NULL };
+const char *spcmd3[] = {"st", "-n", "sp2", "-g", "120x34", NULL };
+const char *spcmd4[] = {"bitwarden", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"spterm",      spcmd1},
 	{"spranger",    spcmd2},
-	{"spterm2",   spcmd3},
-	{"spnews",   spcmd4},
+	{"sp2",   spcmd3},
+	{"bitwarden",   spcmd4},
 };
 
 /* tagging */
@@ -47,12 +47,12 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",	  NULL,			NULL,		0,				1,			 -1 },
-	{ "Firefox",  NULL,			NULL,		1 << 8,			0,			 -1 },
+	{ "Gimp",	  NULL,			NULL,		0,			1,			 -1 },
+	{ "Firefox",      NULL,			NULL,		1 << 8,			0,			 -1 },
 	{ NULL,		  "spterm",		NULL,		SPTAG(0),		1,			 -1 },
 	{ NULL,		  "spfm",		NULL,		SPTAG(1),		1,			 -1 },
-	{ NULL,		  "spnm",		NULL,		SPTAG(3),		1,			 -1 },
-	{ NULL,		  "spterm2",     	NULL,		SPTAG(2),		1,			 -1 },
+	{ NULL,		  "sp2",        	NULL,		SPTAG(2),		1,			 -1 },
+	{ NULL,		  "bitwarden",        	NULL,		SPTAG(3),		1,			 -1 },
 };
 
 /* layout(s) */
@@ -146,7 +146,7 @@ static Key keys[] = {
 	{ MODKEY,            			XK_y,  	   togglescratch,  {.ui = 0 } },
 	{ MODKEY,            			XK_u,	   togglescratch,  {.ui = 1 } },
 	{ MODKEY,            			XK_n,	   togglescratch,  {.ui = 2 } },
-	{ MODKEY,            			XK_l,	   togglescratch,  {.ui = 3 } },
+	{ MODKEY|ShiftMask,      		XK_n,	   togglescratch,  {.ui = 3 } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
